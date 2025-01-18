@@ -50,6 +50,11 @@ const App = () => {
     <div>
       <h1>GitHub User and Repository Search</h1>
 
+      {/* Add the Learn React link for the test */}
+      <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+        Learn React
+      </a>
+
       {/* Show search box if no user is selected */}
       {!selectedUser && (
         <SearchBox onSearchResults={handleSearchResults} />
@@ -91,7 +96,8 @@ const App = () => {
   );
 };
 
-export default App; 
+export default App;
+
 
 
 

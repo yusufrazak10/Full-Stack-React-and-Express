@@ -21,7 +21,7 @@ const SearchBox = ({ onSearchResults }) => {
     setError(''); 
 
     // Fetch request to GitHub's search API for users based on the search query.
-    fetch(`https://api.github.com/search/users?q=${encodeURIComponent(searchQuery)}`)
+    fetch(`/api/search/users?q=${encodeURIComponent(searchQuery)}`)
       .then((response) => {
         // Check if the response is not okay, and if so, throw an error.
         if (!response.ok) {
@@ -62,7 +62,11 @@ const SearchBox = ({ onSearchResults }) => {
       <button type="submit">Search</button> {/* Submit button to trigger search */}
 
       {/* Show loading indicator if search is in progress */}
-      {loading && <p>Loading search results...</p>}
+      {loading && (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
 
       {/* Show error message if there is an error */}
       {error && <p>{error}</p>}
@@ -70,7 +74,8 @@ const SearchBox = ({ onSearchResults }) => {
   );
 };
 
-export default SearchBox; 
+export default SearchBox;
+
 
 
 

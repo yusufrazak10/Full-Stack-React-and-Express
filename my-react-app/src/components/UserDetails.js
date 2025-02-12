@@ -15,7 +15,7 @@ const UserDetails = ({ username, onRepoSelect, onBack }) => {
       setError('');
 
       // Fetch the user's GitHub details based on the username.
-      fetch(`https://api.github.com/users/${username}`)
+      fetch(`/api/users/${username}`)
         // Parse the user data from the response.
         .then((response) => response.json()) 
         .then((data) => {
@@ -23,7 +23,7 @@ const UserDetails = ({ username, onRepoSelect, onBack }) => {
           setUserData(data); 
 
           // After getting user data, fetch the repositories for the user.
-          return fetch(`https://api.github.com/users/${username}/repos`);
+          return fetch(`/api/users/${username}/repos`);
         })
         // Parse the repository data.
         .then((reposData) => reposData.json()) 
@@ -86,6 +86,10 @@ const UserDetails = ({ username, onRepoSelect, onBack }) => {
                 </h4>
                 <p>{repo.description || 'No description available'}</p>
                 <p><strong>Language:</strong> {repo.language || 'Not specified'}</p>
+                {/* Link to the repository on GitHub */}
+                <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+                  Visit GitHub Repository
+                </a>
               </li>
             ))}
           </ul>

@@ -7,11 +7,24 @@ import axios from 'axios'; // Importing axios to mock API calls
 // Mocking axios to avoid actual API calls during testing
 jest.mock('axios');
 
+// Mocking the global fetch function to simulate an error response
+global.fetch = jest.fn(() =>
+  Promise.reject({
+    message: 'Validation Failed',
+  })
+);
+
 describe('Component Tests (with Mocked API calls)', () => {
   
   // Snapshot test for SearchBox component
   it('matches the snapshot for SearchBox', () => {
     const { asFragment } = render(<SearchBox onUserSelect={() => {}} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  // Snapshot test for UserDetails component
+  it('matches the snapshot for UserDetails', () => {
+    const { asFragment } = render(<UserDetails username="octocat" onRepoSelect={() => {}} onBack={() => {}} />);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -56,7 +69,27 @@ describe('Component Tests (with Mocked API calls)', () => {
     expect(screen.getByText('Repository: Hello-World')).toBeInTheDocument();
     expect(screen.getByText('Description: Test repo')).toBeInTheDocument();
   });
+
+  // Test 5: Simulate a click on the "Search" button and check for error message
+  it('should show error message when Search button is clicked and fetch fails', async () => {
+    render(<SearchBox onUserSelect={() => {}} />);
+
+    // Simulate typing into the input
+    fireEvent.change(screen.getByPlaceholderText('Enter a username to search'), {
+      target: { value: 'octocat' },
+    });
+
+    // Simulate clicking the "Search" button
+    fireEvent.click(screen.getByText('Search'));
+
+    // Wait for the error message to appear
+    await waitFor(() => {
+      expect(screen.getByText('Error: Error: Validation Failed')).toBeInTheDocument();
+    });
+  });
 });
+
+
 
 
 

@@ -15,7 +15,7 @@ const RepoDetails = ({ owner, repo }) => {
       setError(null); 
 
       // Fetch repository data from GitHub API
-      fetch(`https://api.github.com/repos/${owner}/${repo}`)
+      fetch(`/api/repos/${owner}/${repo}`)
         .then((response) => {
           if (!response.ok) {
             // Handle error if response is not OK
@@ -31,7 +31,7 @@ const RepoDetails = ({ owner, repo }) => {
           setRepoData(data); 
 
           // Fetch commits data from GitHub API
-          return fetch(`https://api.github.com/repos/${owner}/${repo}/commits`);
+          return fetch(`/api/repos/${owner}/${repo}/commits`);
         })
         .then((commitsData) => {
           if (!commitsData.ok) {
@@ -75,8 +75,12 @@ const RepoDetails = ({ owner, repo }) => {
           <p>Last pushed at: {new Date(repoData.pushed_at).toLocaleDateString()}</p>
           <p>Stars: {repoData.stargazers_count}</p>
           <p><strong>Forks:</strong> {repoData.forks_count}</p>
-        </div>
-      )}
+          {/* GitHub link to the repository */}
+          <a href={`https://github.com/${owner}/${repo}`} target="_blank" rel="noopener noreferrer">
+            Visit GitHub Repository
+          </a>
+    </div>
+   )}
 
       {/* Commits Data Display */}
       {commits.length > 0 && (

@@ -21,7 +21,7 @@ const SearchBox = ({ onSearchResults }) => {
     setError(''); 
 
     // Fetch request to GitHub's search API for users based on the search query.
-    fetch(`/api/search/users?q=${encodeURIComponent(searchQuery)}`)
+    fetch(`https://api.github.com/search/users?q=${encodeURIComponent(searchQuery)}`)
       .then((response) => {
         // Check if the response is not okay, and if so, throw an error.
         if (!response.ok) {

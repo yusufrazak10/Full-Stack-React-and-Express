@@ -15,7 +15,7 @@ const UserDetails = ({ username, onRepoSelect, onBack }) => {
       setError('');
 
       // Fetch the user's GitHub details based on the username.
-      fetch(`/api/users/${username}`)
+      fetch(`https://api.github.com/users/${username}`)
         // Parse the user data from the response.
         .then((response) => response.json()) 
         .then((data) => {
@@ -23,7 +23,7 @@ const UserDetails = ({ username, onRepoSelect, onBack }) => {
           setUserData(data); 
 
           // After getting user data, fetch the repositories for the user.
-          return fetch(`/api/users/${username}/repos`);
+          return fetch(`https://api.github.com/users/${username}/repos`);
         })
         // Parse the repository data.
         .then((reposData) => reposData.json()) 

@@ -15,7 +15,7 @@ const RepoDetails = ({ owner, repo }) => {
       setError(null); 
 
       // Fetch repository data from GitHub API
-      fetch(`/api/repos/${owner}/${repo}`)
+      fetch(`https://api.github.com/repos/${owner}/${repo}`)
         .then((response) => {
           if (!response.ok) {
             // Handle error if response is not OK
@@ -31,7 +31,7 @@ const RepoDetails = ({ owner, repo }) => {
           setRepoData(data); 
 
           // Fetch commits data from GitHub API
-          return fetch(`/api/repos/${owner}/${repo}/commits`);
+          return fetch(`https://api.github.com/repos/${owner}/${repo}/commits`);
         })
         .then((commitsData) => {
           if (!commitsData.ok) {

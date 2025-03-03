@@ -1,105 +1,106 @@
-Full Stack Application: React + Express
+# Full-Stack Web Application (React + Express)
 
-Description
+## Task Overview
 
-This project consists of a full-stack application with a React frontend and an Express backend. The frontend handles the user interface, while the backend provides the server-side functionality and APIs. The two are connected via HTTP requests.
+Create a **full-stack web application** using **React** for the frontend and **Express** for the backend. The app will interact with the **GitHub API** to provide:
 
-Technologies Used
+1. **Search bar** for GitHub users with live search results.
+2. **User profile page** displaying details like repositories, profile picture, bio, etc.
+3. **Repository details** page showing last commits and repository description.
+4. Integration with the **GitHub API** for fetching user and repository data.
 
-Frontend:
-React: A JavaScript library for building user interfaces.
-React Router DOM: A collection of navigational components for React.
-Axios: Promise-based HTTP client for the browser and Node.js.
+Ensure the application is fully functional, meets the following criteria, and passes testing.
 
-Backend:
-Express: Web framework for Node.js.
-Axios: Promise-based HTTP client for the backend to make requests to other services.
-Helmet: Security middleware for Express apps.
-CORS: A middleware to enable cross-origin requests.
-dotenv: Loads environment variables from a .env file.
+---
 
-Dev Tools:
-Jest: JavaScript testing framework.
-Nodemon: A tool that automatically restarts the server during development.
-React Scripts: Scripts for running and building a React application.
+## Features
 
-Project Structure
+- **User Search**: Search for GitHub users and display search results.
+- **User Profile**: Show user details (repositories, profile picture, bio).
+- **Repo Details**: Display repository information like last commit, description, etc.
+- **Responsive UI**: Clean, intuitive, and easy-to-navigate frontend.
+- **Backend API Integration**: Securely fetch data from GitHub via the backend.
 
-Backend (Express): Contains server logic and API routes (server.js).
-Frontend (React): React application located in the my-react-app folder.
-Root: Contains configurations and additional packages for both frontend and backend.
+---
 
-Getting Started
+## Project Structure
 
-Prerequisites
-Install Node.js (version 20.x.x).
-Install npm (version 10.x.x).
+- **Backend**: Express app with API routes to fetch data from GitHub.
+- **Frontend**: React app with components for user search, profile, and repository details.
 
-Installation
-Clone the repository and install dependencies for both the backend and frontend.
+---
 
-# Clone the repository
-git clone <your-repo-url>
-cd <your-project-directory>
+## Tech Stack
 
-# Install dependencies for the backend
-cd Express
-npm install
+- **Frontend**: React, React Router, Axios
+- **Backend**: Express, Axios, CORS, Helmet, dotenv
+- **Dev Tools**: Jest, Nodemon, React Scripts
 
-# Install dependencies for the frontend
-cd ../my-react-app
-npm install
+---
 
-Running the Application
+## Getting Started
 
-Backend (Express)
-The backend runs on port 5000. To start the backend server, run:
-npm run dev
-This command starts the server using Nodemon (for automatic restarts during development).
+### Prerequisites
 
-Frontend (React)
-The frontend runs on port 3000. To start the React app, run:
+1. Install **Node.js** (version 20.x.x).
+2. Install **npm** (version 10.x.x).
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone <your-repo-url>
+    cd <your-project-directory>
+    ```
+
+2. Install dependencies for both backend and frontend:
+
+    - **Backend**:
+
+      ```bash
+      cd Express
+      npm install
+      ```
+
+    - **Frontend**:
+
+      ```bash
+      cd ../my-react-app
+      npm install
+      ```
+
+### Running the Application
+
+- **Backend (Express)**: 
+  ```bash
+  npm run dev
+Runs on port 5000 (auto-restarts with Nodemon).
+
+Frontend (React):
 cd my-react-app
 npm start
-This will start the React development server. It will automatically open your browser and navigate to http://localhost:3000.
-
+Runs on port 3000.
 Available Scripts
 
-Backend (Express)
-npm start: Starts the server using node.
-npm run dev: Starts the server using nodemon (for automatic restarts).
-npm test: Runs tests using Jest.
-heroku-postbuild: Used for deployment, installs frontend and builds it.
-
-Frontend (React)
-npm start: Runs the React app in development mode.
-npm build: Builds the React app for production.
-npm test: Runs tests for the frontend.
-npm eject: Ejects the configuration for customization (advanced use).
-
-Proxying API Requests
-
-In the frontend/package.json, the following line is configured:
-
-"proxy": "http://localhost:5000"
-This ensures that API requests from the React app are proxied to the Express backend running on port 5000.
-
+Backend
+npm start: Starts the server with Node.
+npm run dev: Starts the server with Nodemon.
+npm test: Runs backend tests.
+Frontend
+npm start: Starts React app in development.
+npm build: Builds the app for production.
+npm test: Runs frontend tests.
 Deployment
 
-To deploy the application to Heroku:
-
-Push the backend and frontend to the same Git repository.
-Make sure to have a Heroku account and the Heroku CLI installed.
-Follow the instructions for deploying a Node.js app to Heroku.
-
+Push the backend and frontend to the same GitHub repository.
+Follow instructions for deploying to Heroku.
+Use the Heroku CLI for deployment.
 Testing
 
-The backend uses Jest for unit tests.
-The frontend uses React Testing Library for UI testing.
-To run the tests, use:
-# Run backend tests
-npm test
+Backend: Jest for unit tests.
+Frontend: React Testing Library for UI testing.
+Run tests with:
 
-# Run frontend tests
-cd my-react-app
-npm test
+Backend: npm test
+Frontend: cd my-react-app && npm test

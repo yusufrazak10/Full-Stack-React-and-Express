@@ -83,7 +83,7 @@ npm start
 Runs on port 3000.
 Available Scripts
 
-Backend
+# Backend
 
 npm start: Starts the server with Node.
 
@@ -92,7 +92,7 @@ npm run dev: Starts the server with Nodemon.
 npm test: Runs backend tests.
 
 
-Frontend
+# Frontend
 
 npm start: Starts React app in development.
 
@@ -101,7 +101,7 @@ npm build: Builds the app for production.
 npm test: Runs frontend tests.
 
 
-Deployment
+# Deployment
 
 Push the backend and frontend to the same GitHub repository.
 
@@ -110,7 +110,7 @@ Follow instructions for deploying to Heroku.
 Use the Heroku CLI for deployment.
 
 
-Testing
+# Testing
 
 Backend: Jest for unit tests.
 
